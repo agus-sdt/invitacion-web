@@ -6,7 +6,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-DATABASE = '/var/data/database.db'
+DATABASE = 'database.db'
 
 def init_db():
     conn = sqlite3.connect(DATABASE)
