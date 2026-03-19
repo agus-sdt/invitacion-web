@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ nombre, dni, telefono, restriccion })
                 });
-                const data = await res.json();
+                const data = e.parameter;
 
                 if (res.ok && data.success) {
                     mostrarToast('success', '🥂 ¡Genial! Tu asistencia fue confirmada.');
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ nombre, cancion, artista })
                 });
-                const data = await res.json();
+                const data = e.parameter;
 
                 if (res.ok && data.success) {
                     mostrarToast('success', '🎵 ¡Gracias! Tu canción fue enviada.');
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ nombre, sugerencia })
                 });
-                const data = await res.json();
+                const data = e.parameter;
 
                 if (res.ok && data.success) {
                     mostrarToast('success', '💌 ¡Gracias! Tu mensaje fue guardado.');

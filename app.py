@@ -65,7 +65,7 @@ def submit_rsvp():
         # 👇 PEGÁ TU URL ACÁ
         url = "https://script.google.com/macros/s/AKfycbxj6d4bfFDUVjmvetN1SKTasM-unFBNphUScRIj4tOZFwRMtGgyU2Ta7C2uZDW2ComL/exec"
 
-        response = requests.post(url, json={
+        response = requests.post(url, data={
             "nombre": nombre,
             "dni": dni,
             "telefono": telefono,
