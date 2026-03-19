@@ -63,7 +63,7 @@ def submit_rsvp():
             return jsonify({'success': False, 'message': 'Todos los campos son requeridos'}), 400
 
         # 👇 PEGÁ TU URL ACÁ
-        url = "https://script.google.com/macros/s/AKfycbxxxxxxx/exec"
+        url = "https://script.google.com/macros/s/AKfycbxj6d4bfFDUVjmvetN1SKTasM-unFBNphUScRIj4tOZFwRMtGgyU2Ta7C2uZDW2ComL/exec"
 
         response = requests.post(url, json={
             "nombre": nombre,
