@@ -32,7 +32,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (res.ok && data.success) {
                     mostrarToast('success', '🥂 ¡Genial! Tu asistencia fue confirmada.');
                     formRsvp.reset();
-                    otraGroup.style.display = 'none';
+                    
+                    const otraGroup = document.getElementById('otra-group');
+                    if (otraGroup) {
+                        otraGroup.style.display = 'none';
+                    }
                 } else {
                     mostrarToast('error', data.message || 'Hubo un error, intentá de nuevo.');
                 }
