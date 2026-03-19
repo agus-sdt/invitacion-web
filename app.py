@@ -6,7 +6,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-DATABASE = 'database.db'
+DATABASE = '/var/data/database.db'
 
 def init_db():
     conn = sqlite3.connect(DATABASE)
@@ -40,6 +40,8 @@ def init_db():
     ''')
     conn.commit()
     conn.close()
+
+init_db()
 
 @app.route('/')
 def index():
