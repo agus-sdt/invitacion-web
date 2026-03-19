@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
             btn.textContent = 'Enviando...';
 
             try {
+                await fetch('/api/confirmaciones');
                 const res  = await fetch('/api/rsvp', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
