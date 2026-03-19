@@ -1,5 +1,5 @@
 import os
-
+import requests  # 👈 arriba del archivo
 from flask import Flask, jsonify, request, render_template
 import sqlite3
 from datetime import datetime
@@ -47,26 +47,31 @@ init_db()
 def index():
     return render_template('index.html')
 
+
+
 @app.route('/api/rsvp', methods=['POST'])
 def submit_rsvp():
     try:
-        data = request.get_json()
+        data = request.get_json(silent=True) or {}
+
         nombre      = data.get('nombre')
         dni         = data.get('dni')
-        restriccion = data.get('restriccion', 'Ninguna')
         telefono    = data.get('telefono')
+        restriccion = data.get('restriccion', 'Ninguna')
 
         if not all([nombre, dni, telefono]):
             return jsonify({'success': False, 'message': 'Todos los campos son requeridos'}), 400
 
-        conn = sqlite3.connect(DATABASE)
-        cursor = conn.cursor()
-        cursor.execute(
-            'INSERT INTO rsvp (nombre, dni, restriccion, telefono) VALUES (?, ?, ?, ?)',
-            (nombre, dni, restriccion, telefono)
-        )
-        conn.commit()
-        conn.close()
+        # 👇 PEGÁ TU URL ACÁ
+        url = "https://script.google.com/macros/s/AKfycbxxxxxxx/exec"
+
+        response = requests.post(url, json={
+            "nombre": nombre,
+            "dni": dni,
+            "telefono": telefono,
+            "restriccion": restriccion
+        })
+
         return jsonify({'success': True, 'message': '¡Gracias por confirmar tu asistencia!'})
 
     except Exception as e:
