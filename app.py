@@ -79,7 +79,8 @@ def submit_rsvp():
 @app.route('/api/musica', methods=['POST'])
 def submit_musica():
     try:
-        data    = request.get_json()
+        data = request.get_json(silent=True) or {}
+
         nombre  = data.get('nombre')
         cancion = data.get('cancion')
         artista = data.get('artista', '')
@@ -87,6 +88,7 @@ def submit_musica():
         if not all([nombre, cancion]):
             return jsonify({'success': False, 'message': 'Nombre y canción son requeridos'}), 400
 
+        # 🟢 GUARDAR EN SQLITE (lo que ya tenías)
         conn = sqlite3.connect(DATABASE)
         cursor = conn.cursor()
         cursor.execute(
@@ -95,6 +97,17 @@ def submit_musica():
         )
         conn.commit()
         conn.close()
+
+        # 🟡 ENVIAR A GOOGLE SHEETS
+        url = "https://script.google.com/macros/s/AKfycby4JWgQtIg_GXZYylSCi4XYJYyHIlTxl3XuTgSCP0XIh6w2n8IMUUhUWdVYFtrIc_q5_Q/exec"
+
+        requests.post(url, data={
+            "tipo": "musica",
+            "nombre": nombre,
+            "cancion": cancion,
+            "artista": artista
+        })
+
         return jsonify({'success': True, 'message': '¡Gracias por tu sugerencia musical!'})
 
     except Exception as e:
@@ -103,13 +116,15 @@ def submit_musica():
 @app.route('/api/carta', methods=['POST'])
 def submit_carta():
     try:
-        data       = request.get_json()
+        data = request.get_json(silent=True) or {}
+
         nombre     = data.get('nombre')
         sugerencia = data.get('sugerencia')
 
         if not all([nombre, sugerencia]):
             return jsonify({'success': False, 'message': 'Nombre y sugerencia son requeridos'}), 400
 
+        # 🟢 GUARDAR EN SQLITE
         conn = sqlite3.connect(DATABASE)
         cursor = conn.cursor()
         cursor.execute(
@@ -118,6 +133,16 @@ def submit_carta():
         )
         conn.commit()
         conn.close()
+
+        # 🟡 ENVIAR A GOOGLE SHEETS
+        url = "https://script.google.com/macros/s/AKfycby4JWgQtIg_GXZYylSCi4XYJYyHIlTxl3XuTgSCP0XIh6w2n8IMUUhUWdVYFtrIc_q5_Q/exec"
+
+        requests.post(url, data={
+            "tipo": "carta",
+            "nombre": nombre,
+            "mensaje": sugerencia
+        })
+
         return jsonify({'success': True, 'message': '¡Gracias por tu sugerencia!'})
 
     except Exception as e:
