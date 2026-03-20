@@ -53,7 +53,7 @@ def index():
 def submit_rsvp():
     try:
         data = request.get_json(silent=True) or {}
-
+        
         nombre      = data.get('nombre')
         dni         = data.get('dni')
         telefono    = data.get('telefono')
@@ -63,8 +63,9 @@ def submit_rsvp():
             return jsonify({'success': False, 'message': 'Todos los campos son requeridos'}), 400
 
         # 👇 PEGÁ TU URL ACÁ
-        url = "https://script.google.com/macros/s/AKfycby4JWgQtIg_GXZYylSCi4XYJYyHIlTxl3XuTgSCP0XIh6w2n8IMUUhUWdVYFtrIc_q5_Q/exec"
+        url = "https://script.google.com/macros/s/AKfycbwfWLsGDVchFKfAPSboPc4sU56xeF0jSKvwuzC-ZmK7ALN_1m6vJEOh5YmQTnlQLja_Iw/exec"
         response = requests.post(url, data={
+            "tipo": "rsvp",
             "nombre": nombre,
             "dni": dni,
             "telefono": telefono,
@@ -99,7 +100,7 @@ def submit_musica():
         conn.close()
 
         # 🟡 ENVIAR A GOOGLE SHEETS
-        url = "https://script.google.com/macros/s/AKfycby4JWgQtIg_GXZYylSCi4XYJYyHIlTxl3XuTgSCP0XIh6w2n8IMUUhUWdVYFtrIc_q5_Q/exec"
+        url = "https://script.google.com/macros/s/AKfycbwfWLsGDVchFKfAPSboPc4sU56xeF0jSKvwuzC-ZmK7ALN_1m6vJEOh5YmQTnlQLja_Iw/exec"
 
         requests.post(url, data={
             "tipo": "musica",
@@ -135,7 +136,7 @@ def submit_carta():
         conn.close()
 
         # 🟡 ENVIAR A GOOGLE SHEETS
-        url = "https://script.google.com/macros/s/AKfycby4JWgQtIg_GXZYylSCi4XYJYyHIlTxl3XuTgSCP0XIh6w2n8IMUUhUWdVYFtrIc_q5_Q/exec"
+        url = "https://script.google.com/macros/s/AKfycbwfWLsGDVchFKfAPSboPc4sU56xeF0jSKvwuzC-ZmK7ALN_1m6vJEOh5YmQTnlQLja_Iw/exec"
 
         requests.post(url, data={
             "tipo": "carta",
