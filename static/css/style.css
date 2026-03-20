@@ -218,6 +218,75 @@ p {
   background-color: var(--color-beige);
 }
 
+
+/* INTRO PANTALLA */
+
+.intro {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+
+    opacity: 1;
+    transition: opacity 0.8s ease, visibility 0.8s;
+}
+
+.intro.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.intro-box {
+    text-align: center;
+    animation: fadeInUp 1s ease;
+}
+
+.intro-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.intro input {
+    padding: 12px;
+    width: 250px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.intro button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #d4af7f;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.intro button:hover {
+    transform: scale(1.05);
+}
+
+/* ANIMACIÓN */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* ============================================================
    NAVBAR
    Aparece con slide-down después del carrusel (via JS + clase)
@@ -596,8 +665,14 @@ p {
 /* ============================================================
    RSVP / FORMULARIO
    ============================================================ */
-.form-group {
-  margin-bottom: var(--space-6);
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.full-width {
+    grid-column: span 2;
 }
 
 .form-label {

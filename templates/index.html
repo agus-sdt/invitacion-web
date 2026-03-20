@@ -32,6 +32,14 @@
     <source src="{{ url_for('static', filename='video/video-fondo.mp4') }}" type="video/mp4">
 </video>
 
+<div id="intro" class="intro">
+    <div class="intro-box">
+        <h1 class="intro-title">Nos encantaría saber quién sos</h1>
+        <input type="text" id="nombre-global" placeholder="Tu nombre">
+        <button onclick="guardarNombre()">Continuar</button>
+    </div>
+</div>
+
 <!-- ===================== NAVBAR ===================== -->
 <nav class="navbar" id="navbar">
     <div class="navbar__inner">
@@ -239,10 +247,6 @@
                 <h4 class="card__title text-center mb-8">Sugerí una canción para la fiesta</h4>
                 <form id="musica-form">
                     <div class="form-group">
-                        <label class="form-label" for="nombre-musica">Tu nombre</label>
-                        <input type="text" id="nombre-musica" class="form-input" placeholder="Tu nombre" required>
-                    </div>
-                    <div class="form-group">
                         <label class="form-label" for="cancion">Canción</label>
                         <input type="text" id="cancion" class="form-input" placeholder="Nombre de la canción" required>
                     </div>
@@ -260,10 +264,6 @@
             <div class="card">
                 <h4 class="card__title text-center mb-8">"Cápsula de deseos"<br><small style="font-size:0.7em;color:var(--color-text-muted);">Prometemos leerlos todos con una copa de vino en mano</small></h4>
                 <form id="carta-form">
-                    <div class="form-group">
-                        <label class="form-label" for="nombre-carta">Tu nombre</label>
-                        <input type="text" id="nombre-carta" class="form-input" placeholder="Tu nombre" required>
-                    </div>
                     <div class="form-group">
                         <label class="form-label" for="sugerencia-carta">Tu mensaje</label>
                         <textarea id="sugerencia-carta" class="form-textarea" rows="4" placeholder="¿Un consejo para los novios? ¿Un recuerdo eterno? ¿Un deseo? ¡Escribí lo que quieras!" required></textarea>
@@ -337,12 +337,8 @@
 
         <div class="card">
             <form id="rsvp-form">
-                <div class="form-row-2">
-                    <div class="form-group">
-                        <label class="form-label" for="nombre">Nombre</label>
-                        <input type="text" id="nombre" class="form-input" placeholder="Tu nombre completo" required>
-                    </div>
-                    <div class="form-group">
+                <div class="form-grid">
+                    <div class="form-group full-width">
                         <label class="form-label" for="dni">DNI</label>
                         <input type="text" id="dni" class="form-input" placeholder="Tu DNI" required>
                     </div>
