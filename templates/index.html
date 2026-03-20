@@ -254,7 +254,7 @@
                         <label class="form-label" for="artista">Artista (opcional)</label>
                         <input type="text" id="artista" class="form-input" placeholder="Artista">
                     </div>
-                    <div class="text-center">
+                    <div class="text-center" style="margin-top: 25px;">
                         <button class="btn btn--primary" type="submit">Enviar Sugerencia</button>
                     </div>
                 </form>
@@ -535,8 +535,8 @@ $(document).on('click', '#lightboxOverlay, .lb-close', function() {
 <script>
 // Ubicaciones
 const LUGARES = {
-    ceremonia: { lat: -32.9149483, lng: -60.8699435, titulo: 'Capilla San Benito' },
-    fiesta:    { lat: -32.9340553, lng: -60.8206823, titulo: 'La Querencia Eventos' }
+    ceremonia: { lat: -32.914786086189615, lng: -60.869954255195, titulo: 'Capilla San Benito' }, 
+    fiesta:    { lat: -32.93391119862812, lng: -60.82032825234689, titulo: 'La Querencia Eventos' }, 
 };
 
 let mapa, marcadorActivo;
@@ -576,9 +576,6 @@ function irAlMapa(lugar) {
 </script>
 <!-- Reemplazá YOUR_API_KEY con tu clave de Google Maps -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcjdOVEOYTlM0-KSgrUXiJVAyEVPiya6o&callback=initMap" async defer></script>
-
-=======
-    <title>Nos Casamos</title>
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 
 </head>
