@@ -141,7 +141,7 @@ def submit_carta():
         requests.post(url, data={
             "tipo": "carta",
             "nombre": nombre,
-            "mensaje": sugerencia
+            "mensaje": sugerencia or "Sin mensaje"
         })
 
         return jsonify({'success': True, 'message': '¡Gracias por tu sugerencia!'})
