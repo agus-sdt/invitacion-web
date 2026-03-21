@@ -778,6 +778,17 @@ p {
   color: var(--color-rose-deep);
 }
 
+
+/* ============================================================
+   regalo-box — sección de sugerencias de regalos (ejemplo)
+     Se puede adaptar para cualquier sección que necesite un estilo destacado
+   ============================================================ */
+
+#regalo strong {
+    color: #d4af55;
+    letter-spacing: 1px;
+}
+
 /* ============================================================
    FOOTER
    ============================================================ */
