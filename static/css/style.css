@@ -975,7 +975,7 @@ p {
 /* Flecha scroll-down */
 .scroll-hint {
   position: absolute;
-  bottom: var(--space-6);
+  bottom: 10vh;
   left: 50%;
   transform: translateX(-50%);
   color: rgba(255,255,255,0.7);
